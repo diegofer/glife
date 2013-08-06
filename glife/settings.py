@@ -1,4 +1,4 @@
-
+from local_settings import *
 
 SITE_ID = 1
 
