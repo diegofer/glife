@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %} {% endblock %} | Glife</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <!-- Bootstrap -->
+	    <link href="{{STATIC_URL}}main/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	</head>
+
+	<body>
+
+		{% block body %}{% endblock %}
+
+		{% block script %} {% endblock %}
+
+
+
+		<!-- JavaScript plugins (requires jQuery) -->
+	    <script src="http://code.jquery.com/jquery.js"></script>
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	    <script src="{{STATIC_URL}}main/js/bootstrap.min.js"></script>
+
+	    <!-- Optionally enable responsive features in IE8 -->
+	    <script src="{{STATIC_URL}}main/js/respond.min.js"></script>
+
+
+		
+	</body>
+
+</html>

@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 
-
+import os
 from local_settings import *
+
+# Ruta relativa para referencias las carpetas de plantillas y archivos staticos
+RUTA_PROYECTO = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+
 
 SITE_ID = 1
 
@@ -88,6 +92,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
