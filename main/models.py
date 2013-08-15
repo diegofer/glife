@@ -6,7 +6,7 @@ class Persona(models.User):
 	nombre 	= models.CharField(max_length=50)
 	apellido = models.CharField(max_length=50)
 	telefono = models.IntegerField()
-	email = models.CharField(max_length=100)
+	email = models.CharField(max_length=100, unique=True)
 	fecha_nacimiento = models.DateField()
 	
 class Lider(Persona):
