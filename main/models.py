@@ -19,10 +19,7 @@ class Miembro(models.Model):
 	grupo = models.ForeignKey(Grupo)
 
 class Colider(models.Model):
-	"""
-	Posee un lider y un grupo asignado
-	al heredar del modelo Miembro
-	"""
+	
 	persona = models.OneToOneField(Persona)
 	grupo = models.ForeignKey(Grupo)
 
