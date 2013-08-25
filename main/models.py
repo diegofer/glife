@@ -1,45 +1,35 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Persona(models.User):
+class Persona(models.Model):
 
 	nombre 	= models.CharField(max_length=50)
 	apellido = models.CharField(max_length=50)
 	telefono = models.IntegerField()
-	email = models.CharField(max_length=100)
+	email = models.CharField(max_length=100, unique=True)
 	fecha_nacimiento = models.DateField()
 	
-class Lider(Persona):
+class Lider(models.Model):
 
-	persona = models.ForeignKey(Persona)
-	grupos = models.ForeignKey(Grupo)
-	colideres = models.ForeignKey(Colider)
+	persona = models.OneToOneField(Persona)
 
-	
-class Miembro(Persona):
-
-	lider = models.OneToOneField(Lider)
-	grupo = models.OneToOneField(Grupo)
-	
-class Colider(Miembro):
-	"""
-	Posee un lider y un grupo asignado
-	al heredar del modelo Miembro
-	"""
 
 class Grupo(models.Model):
 
-	lider = models.OneToOneField(Lider)
-	colideres = models.ForeignKey(Colider)
-	miembros = models.ForeignKey(Miembro)
+	direccion = models.CharField(max_length=150)
+	dia = models.CharField(max_length=10)
+	hora = models.TimeField()
+	lider = models.ForeignKey(Lider)
 
 
-#class Grupograma(models.Model):
+class Miembro(models.Model):
 
-    
-		
-		
+	persona = models.OneToOneField(Persona)
+	grupo = models.ForeignKey(Grupo)
 
-		
-		
-		
+class Colider(models.Model):
+	
+	persona = models.OneToOneField(Persona)
+	grupo = models.ForeignKey(Grupo)
+
+
