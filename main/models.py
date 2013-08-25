@@ -34,7 +34,7 @@ class Grupo(models.Model):
 	miembros = models.ForeignKey(Miembro)
 
 
-class Grupograma(models.Model):
+#class Grupograma(models.Model):
 
     
 		
