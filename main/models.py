@@ -12,7 +12,7 @@ class Persona(models.Model):
 	fecha_nacimiento = models.DateField()
 
 	def __unicode__(self):
-		return self.nombre
+		return '%s %s' %(self.nombre, self.apellido) 
 
 
 
