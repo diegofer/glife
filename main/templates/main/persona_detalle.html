@@ -1,0 +1,94 @@
+{% extends 'main/base.html' %} 
+
+{% block title %}Persona{% endblock title %}
+
+{% block body %}
+
+
+<div class="page-header">
+	<h1> <span class="glyphicon glyphicon-user"></span>  {{persona}} </h1>
+</div>
+
+
+<div class="row">
+
+	<div class="col-md-8">
+		
+		<div class="well well-sm">
+
+			<ul class="list-group">
+
+				<li class="list-group-item">
+					<span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;&nbsp;
+					{{persona.telefono}} 
+				</li>
+
+				<li class="list-group-item">
+					<span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;&nbsp;
+					{{persona.email}} 
+				</li>
+
+				<li class="list-group-item">
+					<span class="glyphicon glyphicon-calendar"></span> &nbsp;&nbsp;&nbsp;
+					{{persona.fecha_nacimiento}} 
+				</li>
+
+
+				
+
+			</ul>
+
+		</div>
+
+
+	</div>
+
+
+
+	<div class="col-md-4">
+		
+		<div class="well well-sm">
+			<ul class="list-group">
+
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-md-4">
+							<span class="glyphicon glyphicon-user icon-md"></span> 
+							<h6>Tipo</h6>
+						</div>
+						<div class="col-md-8">
+							<h4>
+								<span class="label label-info">
+								{% if tipo == "lid" %}
+									Lider
+								{% elif tipo == "mb" %}
+									Miembro
+								{% else %}
+									Colider
+								{% endif %}
+								</span>
+							</h4> 
+						</div>
+					</div>		
+				</li>
+
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-md-4">
+							<span class="glyphicon glyphicon-tree-deciduous icon-grupo icon-md"></span> 
+							<h6>Grupo</h6>
+						</div>
+						<div class="col-md-8">
+							<a href="{% url 'grupo' grupo_id %}" class="btn btn-info btn-sm" >{{grupo_id}}</a>
+						</div>
+					</div>		
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+
+
+{% endblock body %}

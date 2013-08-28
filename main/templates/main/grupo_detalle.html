@@ -1,0 +1,115 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Grupo {% endblock %}
+
+{% block body %}
+
+<div class="page-header">
+	<h1><span class="glyphicon glyphicon-tree-deciduous icon-grupo"></span> Grupo {{ grupo.id }} </h1>
+</div>
+
+
+<div class="row">
+
+
+	<div class="col-md-8">
+
+
+		<div class="well well-sm">
+			<h3> 
+			{% for item in membresia%}
+				{% if item.tipo == item.LIDER %}
+					Lider: <a href="{% url 'persona' item.persona.id grupo.id item.tipo %}">{{item.persona}}</a>  
+				{% endif %}
+			{% endfor %}
+			</h3>
+
+			<h4> 
+			{% for item in membresia%}
+				{% if item.tipo == item.COLIDER %}
+					Colider: {{item.persona}}
+				{% endif %}
+			{% endfor %}
+			</h4>
+
+			
+		</div>
+
+
+		
+		<h3>Asistentes</h3>
+		<div class="well well-sm">
+			
+			<div class="list-group">
+			{% for item in membresia %}
+
+				{% if item.tipo == item.MIEMBRO %}
+
+				<a href="{% url 'persona' item.persona.id grupo.id item.tipo  %}" class="list-group-item">
+					<span class="glyphicon glyphicon-user"></span>
+					{{item.persona}}  
+					<span class="glyphicon glyphicon-hand-right pull-right"></span>
+				</a>
+				{% endif %}
+				{% empty %}
+					<div class="alert alert-danger">Grupo {{grupo.id}} no tiene miembros aun...</div>
+			{% endfor %}
+			</div>
+			
+		</div>
+
+	</div>
+
+
+
+	<div class="col-md-4">
+		
+		<div class="well well-sm">
+			<ul class="list-group">
+
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-md-4">
+							<span class="glyphicon glyphicon-calendar icon-md"></span> 
+							<h6>Día</h6>
+						</div>
+						<div class="col-md-8">
+							<h4><span class="label label-info">{{grupo.dia}}</span></h4> 
+						</div>
+					</div>		
+				</li>
+
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-md-4">
+							<span class="glyphicon glyphicon-time icon-md"></span> 
+							<h6>Hora</h6>
+						</div>
+						<div class="col-md-8">
+							<h4><span class="label label-info">{{grupo.hora}}</span></h4>
+						</div>
+					</div>		
+				</li>
+
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-md-4">
+							<span class="glyphicon glyphicon-map-marker icon-md"></span>
+							<h6>Lugar</h6>
+						</div>
+						<div class="col-md-8">
+							<h4><span class="label label-info">{{grupo.direccion}}</span></h4>
+						</div>
+					</div>		
+				</li>
+
+
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+
+
+{% endblock body %}

@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Grupos {% endblock %}
+
+{% block body %}
+
+	<div class="page-header">
+		<h1>Grupos</h1>
+	</div>
+
+	<div class="row">
+
+		{% for grupo in grupos %}
+
+		<div class="col-lg-4">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4><span class="glyphicon glyphicon-tree-deciduous icon-grupo"></span> Grupo {{grupo.id}}</h4>
+				</div>
+				<div class="panel-body">
+					<p>{{grupo.direccion}}</p>
+					<a href="{% url 'grupo' grupo_id=grupo.id %}" class="btn btn-primary btn-sm btn-block">Ver Grupo</a>
+				</div>
+
+			</div>
+		</div>
+
+		{% empty %}
+			<div class="alert alert-danger">No hay grupos creados todavía...</div>
+		{% endfor %}
+		
+
+	</div>
+
+{% endblock body %}
